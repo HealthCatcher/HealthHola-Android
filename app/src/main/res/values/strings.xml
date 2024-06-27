@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">hearur-android</string>
+    <string name="title_healthinfo">건강정보</string>
+    <string name="title_diagnosis">자가진단</string>
+    <string name="title_experience">체험단</string>
+    <string name="title_community">커뮤니티</string>
+    <string name="title_settings">설정</string>
+</resources>
