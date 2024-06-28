@@ -1,16 +1,16 @@
-package com.hsfa.hearur_android.ui.community;
+package com.hsfa.hearur_android.mainactivity.ui.experience;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class CommunityViewModel extends ViewModel {
+public class ExperienceViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public CommunityViewModel() {
+    public ExperienceViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is community fragment");
+        mText.setValue("This is notifications fragment");
     }
 
     public LiveData<String> getText() {

@@ -1,4 +1,4 @@
-package com.hsfa.hearur_android.ui.settings;
+package com.hsfa.hearur_android.mainactivity.ui.diagnosis;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,21 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.hsfa.hearur_android.databinding.FragmentSettingsBinding;
+import com.hsfa.hearur_android.databinding.FragmentDiagnosisBinding;
 
-public class SettingsFragment extends Fragment {
-    private FragmentSettingsBinding binding;
+public class DiagnosisFragment extends Fragment {
+    private FragmentDiagnosisBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SettingsViewModel settingsViewModel =
-                new ViewModelProvider(this).get(SettingsViewModel.class);
+        DiagnosisViewModel diagnosisViewModel =
+                new ViewModelProvider(this).get(DiagnosisViewModel.class);
 
-        binding = FragmentSettingsBinding.inflate(inflater, container, false);
+        binding = FragmentDiagnosisBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textSettings;
-        settingsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textDiagnosis;
+        diagnosisViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

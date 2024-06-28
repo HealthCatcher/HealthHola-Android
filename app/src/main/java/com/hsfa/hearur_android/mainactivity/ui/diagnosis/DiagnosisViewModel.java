@@ -1,4 +1,4 @@
-package com.hsfa.hearur_android.ui.diagnosis;
+package com.hsfa.hearur_android.mainactivity.ui.diagnosis;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

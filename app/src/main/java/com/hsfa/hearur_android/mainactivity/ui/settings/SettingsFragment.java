@@ -1,4 +1,4 @@
-package com.hsfa.hearur_android.ui.community;
+package com.hsfa.hearur_android.mainactivity.ui.settings;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,21 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.hsfa.hearur_android.databinding.FragmentCommunityBinding;
+import com.hsfa.hearur_android.databinding.FragmentSettingsBinding;
 
-public class CommunityFragment extends Fragment {
-    private FragmentCommunityBinding binding;
+public class SettingsFragment extends Fragment {
+    private FragmentSettingsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        CommunityViewModel communityViewModel =
-                new ViewModelProvider(this).get(CommunityViewModel.class);
+        SettingsViewModel settingsViewModel =
+                new ViewModelProvider(this).get(SettingsViewModel.class);
 
-        binding = FragmentCommunityBinding.inflate(inflater, container, false);
+        binding = FragmentSettingsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textCommunity;
-        communityViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textSettings;
+        settingsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

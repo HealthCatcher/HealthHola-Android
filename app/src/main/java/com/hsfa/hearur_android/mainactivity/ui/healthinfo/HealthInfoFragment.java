@@ -1,4 +1,4 @@
-package com.hsfa.hearur_android.ui.healthinfo;
+package com.hsfa.hearur_android.mainactivity.ui.healthinfo;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,14 +18,14 @@ public class HealthInfoFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HealthInfoViewModel homeViewModel =
+        HealthInfoViewModel healthInfoViewModel =
                 new ViewModelProvider(this).get(HealthInfoViewModel.class);
 
         binding = FragmentHealthinfoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textHealthinfo;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        healthInfoViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

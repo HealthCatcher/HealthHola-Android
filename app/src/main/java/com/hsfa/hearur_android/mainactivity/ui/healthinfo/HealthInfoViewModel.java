@@ -1,16 +1,16 @@
-package com.hsfa.hearur_android.ui.experience;
+package com.hsfa.hearur_android.mainactivity.ui.healthinfo;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ExperienceViewModel extends ViewModel {
+public class HealthInfoViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public ExperienceViewModel() {
+    public HealthInfoViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is notifications fragment");
+        mText.setValue("This is home fragmenttest");
     }
 
     public LiveData<String> getText() {

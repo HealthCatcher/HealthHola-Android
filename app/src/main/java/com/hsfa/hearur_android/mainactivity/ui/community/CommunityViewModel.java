@@ -1,15 +1,16 @@
-package com.hsfa.hearur_android.ui.settings;
+package com.hsfa.hearur_android.mainactivity.ui.community;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SettingsViewModel extends ViewModel {
+public class CommunityViewModel extends ViewModel {
+
     private final MutableLiveData<String> mText;
 
-    public SettingsViewModel() {
+    public CommunityViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is settings fragment");
+        mText.setValue("This is community fragment");
     }
 
     public LiveData<String> getText() {
