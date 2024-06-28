@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/navigation_healthinfo"
-        android:name="com.hsfa.hearur_android.ui.healthinfo.HealthInfoFragment"
+        android:name="com.hsfa.hearur_android.mainactivity.ui.healthinfo.HealthInfoFragment"
         android:label="@string/title_healthinfo"
         tools:layout="@layout/fragment_healthinfo" />
 
     <fragment
         android:id="@+id/navigation_diagnosis"
-        android:name="com.hsfa.hearur_android.ui.diagnosis.DiagnosisFragment"
+        android:name="com.hsfa.hearur_android.mainactivity.ui.diagnosis.DiagnosisFragment"
         android:label="@string/title_diagnosis"
         tools:layout="@layout/fragment_diagnosis" />
 
     <fragment
         android:id="@+id/navigation_experience"
-        android:name="com.hsfa.hearur_android.ui.experience.ExperienceFragment"
+        android:name="com.hsfa.hearur_android.mainactivity.ui.experience.ExperienceFragment"
         android:label="@string/title_experience"
         tools:layout="@layout/fragment_experience" />
 
     <fragment
         android:id="@+id/navigation_community"
-        android:name="com.hsfa.hearur_android.ui.community.CommunityFragment"
+        android:name="com.hsfa.hearur_android.mainactivity.ui.community.CommunityFragment"
         android:label="@string/title_community"
         tools:layout="@layout/fragment_community" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="com.hsfa.hearur_android.ui.settings.SettingsFragment"
+        android:name="com.hsfa.hearur_android.mainactivity.ui.settings.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>
