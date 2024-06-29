@@ -59,6 +59,9 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
+    private String clientId = String.valueOf(R.string.client_id);
+    private String clientSecret = String.valueOf(R.string.client_secret);
+    private String clientName = String.valueOf(R.string.client_name);
     // 백엔드에 jwt토큰 요청
     private Observable<String> fetchJWT(UserInfo userInfo) {
         return Observable.create(emitter -> {
@@ -421,7 +424,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
         });
-
+/*
         // ClientSpinner
         ArrayAdapter<CharSequence> oauthClientSpinnerAdapter = ArrayAdapter.createFromResource(
                 this,
@@ -470,7 +473,7 @@ public class LoginActivity extends AppCompatActivity {
                 // do nothing
             }
         });
-
+*/
         // Client 정보 변경
         binding.buttonOAuthInit.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -31,14 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("my_app_pref", MODE_PRIVATE);
         editor = sharedPreferences.edit();
-
+        // 로그인 로직 비활성화!!!!!!!!!!!!!!!!!!!!!!!!!
         // 사용 예시: 로그인 상태 가져오기
-        boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
-        if(!isLoggedIn) {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        }
+//        boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+//        if(!isLoggedIn) {
+//            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
