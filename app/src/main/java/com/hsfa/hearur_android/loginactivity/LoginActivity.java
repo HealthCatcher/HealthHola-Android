@@ -2,8 +2,10 @@ package com.hsfa.hearur_android.loginactivity;
 
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -13,6 +15,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.hsfa.hearur_android.R;
 import com.hsfa.hearur_android.databinding.ActivityLoginBinding;
+import com.hsfa.hearur_android.dto.UserInfo;
+import com.hsfa.hearur_android.network.FetchJWTApiService;
+import com.hsfa.hearur_android.network.FetchJWTResponse;
+import com.hsfa.hearur_android.network.NaverApiService;
+import com.hsfa.hearur_android.network.NaverProfileRepository;
+import com.hsfa.hearur_android.network.NaverProfileResponse;
 import com.navercorp.nid.NaverIdLoginSDK;
 
 import android.content.Context;
@@ -28,23 +36,96 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.Disposable;
+import okhttp3.Headers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class LoginActivity extends AppCompatActivity {
+
+    private NaverProfileRepository naverProfileRepository;
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     private static final String TAG = "LoginActivity";
 
     private ActivityLoginBinding binding;
     private Context context;
 
-    private String clientId = "fGMii6y0U1sRNvOt5AMw";
-    private String clientSecret = "KEXtf34wxd";
-    private String clientName = "hearur";
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
+    // 백엔드에 jwt토큰 요청
+    private Observable<String> fetchJWT(UserInfo userInfo) {
+        return Observable.create(emitter -> {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://192.168.219.100:8080/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+
+            FetchJWTApiService fetchJWTApiService = retrofit.create(FetchJWTApiService.class);
+            Call<FetchJWTResponse> call = fetchJWTApiService.getJWT(userInfo);
+            call.enqueue(new Callback<FetchJWTResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<FetchJWTResponse> call, @NonNull Response<FetchJWTResponse> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        Headers headers = response.headers();
+                        String jwt = headers.get("Authorization");
+                        if (jwt != null) {
+                            emitter.onNext(jwt);
+                            emitter.onComplete();
+                        } else {
+                            emitter.onError(new Throwable("JWT is null"));
+                        }
+                    } else {
+                        emitter.onError(new Throwable("Request failed: " + response.message()));
+                        Log.e(TAG, "onResponse: "+ response.message());
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<FetchJWTResponse> call, @NonNull Throwable t) {
+                    Log.e(TAG, "onFailure: ", t);
+                    emitter.onError(t);
+                }
+            });
+        });
+    }
+    // 네이버 프로필 정보 가져오기
+    private void getUserProfile(String accessToken) {
+        Disposable disposable = naverProfileRepository.requestNaverUserProfile(accessToken)
+                .flatMap(this::fetchJWT)
+                .subscribe(
+                        jwtToken -> {
+                            // JWT 토큰을 사용하여 필요한 작업 수행
+                            Log.d("NaverProfile", "JWT Token: " + jwtToken);
+                            sharedPreferences = getSharedPreferences("my_app_pref", MODE_PRIVATE);
+                            editor = sharedPreferences.edit();
+                            editor.putString("jwt", jwtToken);
+                            editor.apply();
+                        },
+                        throwable -> {
+                            // 오류 처리
+                            Log.e("NaverProfile", "Failed to fetch JWT token: " + throwable.getMessage());
+                        }
+                );
+
+        compositeDisposable.add(disposable); // Disposable을 compositeDisposable에 추가
+    }
+
+    // 네이버 로그인 런처
     private final ActivityResultLauncher<Intent> launcher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == RESULT_OK) {
                     // 성공
                     updateView();
+                    String accessToken = NaverIdLoginSDK.INSTANCE.getAccessToken();
+                    getUserProfile(accessToken);
                 } else if (result.getResultCode() == RESULT_CANCELED) {
                     // 실패 or 에러
                     String errorCode = NaverIdLoginSDK.INSTANCE.getLastErrorCode().getCode();
@@ -59,7 +140,7 @@ public class LoginActivity extends AppCompatActivity {
         // View Binding
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        naverProfileRepository = new NaverProfileRepository();
         init();
     }
 
@@ -70,7 +151,6 @@ public class LoginActivity extends AppCompatActivity {
         NaverIdLoginSDK.INSTANCE.initialize(context, clientId, clientSecret, clientName);
         NaverIdLoginSDK.INSTANCE.setShowMarketLink(true);
         NaverIdLoginSDK.INSTANCE.setShowBottomTab(true);
-
 
         binding.buttonOAuthLoginImg.setOAuthLogin(new OAuthLoginCallback() {
             @Override
