@@ -7,15 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="brand_primary_100">#FFF8E0D9</color>
-    <color name="brand_primary_200">#FFDFAFAA</color>
-    <color name="brand_primary_300">#FFEC4122</color>
-    <color name="brand_primary_500">#FF6549</color>
-    <color name="brand_primary_600">#FC8069</color>
-    <color name="brand_primary_400">#EC4122</color>
-    <color name="brand_primary_700">#B41C00</color>
-    <color name="brand_primary_800">#D92100</color>
-    <color name="bottom_nav_color">#B41C00</color>
-    <color name="colorPrimary">#EC4122</color>
-    <color name="colorPrimaryDark">#D92100</color>
+    <color name="brand_primary_100">#E0F2F1</color> <!-- Light Teal -->
+    <color name="brand_primary_200">#B2DFDB</color> <!-- Teal 200 -->
+    <color name="brand_primary_300">#80CBC4</color> <!-- Teal 300 -->
+    <color name="brand_primary_400">#4DB6AC</color> <!-- Teal 400 -->
+    <color name="brand_primary_500">#009688</color> <!-- Teal 500 -->
+    <color name="brand_primary_600">#00897B</color> <!-- Teal 600 -->
+    <color name="brand_primary_700">#00796B</color> <!-- Teal 700 -->
+    <color name="brand_primary_800">#00695C</color> <!-- Teal 800 -->
+    <color name="bottom_nav_color">#004D40</color> <!-- Dark Teal -->
+    <color name="colorPrimary">#009688</color> <!-- Teal 500 -->
+    <color name="colorPrimaryDark">#00796B</color> <!-- Teal 700 -->
+
 </resources>
