@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp">
+
+            <!-- 이미지 뷰 -->
+            <ImageView
+                android:id="@+id/card_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:background="#dddddd"
+                android:src="@drawable/pngegg"
+                 />
+
+            <!-- 이미지 위에 텍스트 -->
+            <TextView
+                android:id="@+id/card_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:background="#99000000"
+                android:elevation="4dp"
+                android:padding="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Your Text Here"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/card_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="70dp"
+                android:background="#99000000"
+                android:elevation="4dp"
+                android:padding="8dp"
+                android:text="Your Text Here"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+            <ImageView
+                android:id="@+id/card_product"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="top|end"
+                android:layout_marginEnd="40dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/pngegg"/>
+
+        </FrameLayout>
+        <TextView
+            android:id="@+id/card_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:text="Your Text Here"
+            android:textSize="16sp"
+            android:gravity="end"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
