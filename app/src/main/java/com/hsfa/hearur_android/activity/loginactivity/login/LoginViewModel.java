@@ -1,4 +1,4 @@
-package com.hsfa.hearur_android.loginactivity.login;
+package com.hsfa.hearur_android.activity.loginactivity.login;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

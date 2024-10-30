@@ -1,4 +1,4 @@
-package com.hsfa.hearur_android.mainactivity.ui.community;
+package com.hsfa.hearur_android.activity.mainactivity.ui.community;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -7,10 +7,8 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -74,35 +72,25 @@ public class CommunityFragment extends Fragment {
 
     private void displayPosts(List<Post> posts) {
         LinearLayout container = binding.postList;
+        LayoutInflater inflater = LayoutInflater.from(requireContext()); // LayoutInflater 초기화
+
         for (Post post : posts) {
-            // LinearLayout을 동적으로 생성
-            LinearLayout postLayout = new LinearLayout(requireContext());
-            postLayout.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT));
-            postLayout.setOrientation(LinearLayout.VERTICAL);
+            // XML 레이아웃 inflate
+            View postView = inflater.inflate(R.layout.experience_item2, container, false);
 
-            // 제목 TextView 생성 및 설정
-            TextView titleTextView = new TextView(requireContext());
-            titleTextView.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT));
+            // 제목, 서브타이틀, 조회수, 추천수 설정
+            TextView titleTextView = postView.findViewById(R.id.item_title);
+            TextView subtitleTextView = postView.findViewById(R.id.item_subtitle);
+            TextView viewsTextView = postView.findViewById(R.id.item_views);
+            TextView likesTextView = postView.findViewById(R.id.item_likes);
+
             titleTextView.setText(post.getTitle());
-            titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-            titleTextView.setTypeface(null, Typeface.BOLD);
-            postLayout.addView(titleTextView);
+            subtitleTextView.setText(post.getContent()); // 서브타이틀이 Post 모델에 있어야 함
+            viewsTextView.setText("조회수: " + 100); // 조회수 설정
+            likesTextView.setText("추천수: " + 200); // 추천수 설정
 
-            // 내용 TextView 생성 및 설정
-            TextView contentTextView = new TextView(requireContext());
-            contentTextView.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT));
-            contentTextView.setText(post.getContent());
-            contentTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
-            postLayout.addView(contentTextView);
-
-            // 생성한 LinearLayout을 컨테이너에 추가
-            container.addView(postLayout);
+            // 생성한 View를 컨테이너에 추가
+            container.addView(postView);
 
             // 각 게시물 사이에 구분선 추가 (옵션)
             if (posts.indexOf(post) < posts.size() - 1) {

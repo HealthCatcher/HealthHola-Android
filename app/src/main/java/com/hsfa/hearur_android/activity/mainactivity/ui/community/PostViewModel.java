@@ -1,4 +1,4 @@
-package com.hsfa.hearur_android.mainactivity.ui.community;
+package com.hsfa.hearur_android.activity.mainactivity.ui.community;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;

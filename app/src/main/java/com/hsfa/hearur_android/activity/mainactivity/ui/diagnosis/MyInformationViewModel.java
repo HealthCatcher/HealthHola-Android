@@ -1,16 +1,15 @@
-package com.hsfa.hearur_android.mainactivity.ui.experience;
+package com.hsfa.hearur_android.activity.mainactivity.ui.diagnosis;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ExperienceViewModel extends ViewModel {
-
+public class MyInformationViewModel extends ViewModel {
     private final MutableLiveData<String> mText;
 
-    public ExperienceViewModel() {
+    public MyInformationViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is notifications fragment");
+        mText.setValue("This is dashboard fragment");
     }
 
     public LiveData<String> getText() {

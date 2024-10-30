@@ -1,4 +1,4 @@
-package com.hsfa.hearur_android.loginactivity.login;
+package com.hsfa.hearur_android.activity.loginactivity.login;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

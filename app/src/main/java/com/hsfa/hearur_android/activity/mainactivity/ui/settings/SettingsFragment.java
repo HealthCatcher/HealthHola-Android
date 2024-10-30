@@ -1,4 +1,4 @@
-package com.hsfa.hearur_android.mainactivity.ui.settings;
+package com.hsfa.hearur_android.activity.mainactivity.ui.settings;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
