@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/my_information_layout"
-    tools:context=".mainactivity.ui.diagnosis.MyInformationFragment">
+    tools:context=".activity.mainactivity.ui.diagnosis.MyInformationFragment">
 
     <TextView
         android:layout_width="match_parent"
