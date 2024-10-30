@@ -1,4 +1,4 @@
-package com.hsfa.hearur_android.loginactivity;
+package com.hsfa.hearur_android.activity.loginactivity;
 
 import android.content.Intent;
 
