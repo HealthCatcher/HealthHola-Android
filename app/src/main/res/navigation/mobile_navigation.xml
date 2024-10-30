@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_healthinfo">
+    app:startDestination="@+id/navigation_experience">
 
+    <!-- HealthInfoFragment
     <fragment
         android:id="@+id/navigation_healthinfo"
         android:name="com.hsfa.hearur_android.mainactivity.ui.healthinfo.HealthInfoFragment"
@@ -16,22 +17,22 @@
         android:name="com.hsfa.hearur_android.mainactivity.ui.diagnosis.DiagnosisFragment"
         android:label="@string/title_diagnosis"
         tools:layout="@layout/fragment_diagnosis" />
-
+    -->
     <fragment
         android:id="@+id/navigation_experience"
-        android:name="com.hsfa.hearur_android.mainactivity.ui.experience.ExperienceFragment"
+        android:name="com.hsfa.hearur_android.activity.mainactivity.ui.experience.ExperienceFragment"
         android:label="@string/title_experience"
         tools:layout="@layout/fragment_experience" />
 
     <fragment
         android:id="@+id/navigation_community"
-        android:name="com.hsfa.hearur_android.mainactivity.ui.community.CommunityFragment"
+        android:name="com.hsfa.hearur_android.activity.mainactivity.ui.community.CommunityFragment"
         android:label="@string/title_community"
         tools:layout="@layout/fragment_community" />
 
     <fragment
-        android:id="@+id/navigation_settings"
-        android:name="com.hsfa.hearur_android.mainactivity.ui.settings.SettingsFragment"
-        android:label="@string/title_settings"
-        tools:layout="@layout/fragment_settings" />
+        android:id="@+id/navigation_survey"
+        android:name="com.hsfa.hearur_android.activity.mainactivity.ui.survey.SurveyFragment"
+        android:label="@string/title_survey"
+        tools:layout="@layout/fragment_survey" />
 </navigation>
