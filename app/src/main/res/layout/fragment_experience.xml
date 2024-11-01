@@ -7,74 +7,144 @@
     android:layout_height="match_parent"
     tools:context=".activity.mainactivity.ui.experience.ExperienceFragment">
 
-    <!-- 카테고리 바 -->
-    <HorizontalScrollView
-        android:id="@+id/category_bar"
-        android:layout_width="match_parent"
+    <!-- 상단 탭 레이아웃 (체험리스트, 추천리스트, 마이 리스트) -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:scrollbars="horizontal"
-        android:fadingEdgeLength="16dp"
-        android:requiresFadingEdge="horizontal"
+        android:background="@color/white"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <LinearLayout
+        <com.google.android.material.tabs.TabItem
+            android:text="체험리스트"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:text="추천리스트"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:text="마이 리스트"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+    <!--    <HorizontalScrollView-->
+<!--        android:id="@+id/category_bar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:paddingLeft="10dp"-->
+<!--        android:paddingRight="10dp"-->
+<!--        android:scrollbars="horizontal"-->
+<!--        android:fadingEdgeLength="16dp"-->
+<!--        android:requiresFadingEdge="horizontal"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            &lt;!&ndash; 카테고리 아이템 (TextView로 예시) &ndash;&gt;-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:text="#건강기능식품"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:text="#생활"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:text="#스포츠"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold" />-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:text="#헬스"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:text="#피트니스"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold" />-->
+
+
+<!--            &lt;!&ndash; 더 많은 카테고리 추가 가능 &ndash;&gt;-->
+
+<!--        </LinearLayout>-->
+<!--    </HorizontalScrollView>-->
+
+    <!-- 진행 및 종료 버튼 -->
+    <LinearLayout
+        android:id="@+id/status_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp">
+
+        <Button
+            android:id="@+id/btn_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginEnd="8dp"
+            android:text="진행"
+            android:textSize="12sp"
+            android:padding="2dp"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+             />
 
-            <!-- 카테고리 아이템 (TextView로 예시) -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="#건강기능식품"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="#생활"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="#스포츠"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="#헬스"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="#피트니스"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-
-            <!-- 더 많은 카테고리 추가 가능 -->
-
-        </LinearLayout>
-    </HorizontalScrollView>
-
+        <Button
+            android:id="@+id/btn_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="종료"
+            android:textSize="12sp"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:padding="1dp"
+             />
+    </LinearLayout>
     <!-- 스크롤뷰 -->
     <ScrollView
         android:layout_width="match_parent"
@@ -83,11 +153,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintTop_toBottomOf="@id/category_bar"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
         <LinearLayout
             android:id="@+id/experience_list"
             android:layout_width="match_parent"
