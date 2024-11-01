@@ -74,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
+        if (id == R.id.action_notice) {
+            // 공지사항 버튼이 눌렸을 때 동작할 코드 작성
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
