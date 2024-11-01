@@ -70,59 +70,7 @@ public class ExperienceFragment extends Fragment {
 
                 // LinearLayout에 추가
                 linearLayout.addView(itemView);
-            }
-        /*
-            // 데이터를 2개씩 묶어서 레이아웃 생성
-            for (int i = 0; i < strings.size(); i += 2) {
-                // Horizontal LinearLayout 생성 (행)
-                LinearLayout rowLayout = new LinearLayout(getContext());
-                rowLayout.setOrientation(LinearLayout.HORIZONTAL);
-                rowLayout.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT
-                ));
-
-                // 첫 번째 커스텀 뷰 추가
-                View itemView1 = getLayoutInflater().inflate(R.layout.experience_item, rowLayout, false);
-                LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
-                itemView1.setLayoutParams(params1);
-                ImageView imageView1 = itemView1.findViewById(R.id.item_image);
-                TextView viewsText1 = itemView1.findViewById(R.id.item_views);
-                TextView likesText1 = itemView1.findViewById(R.id.item_likes);
-
-                // 이미지와 텍스트 설정 (임시 데이터)
-                viewsText1.setText("조회수: " + (1000 + i));
-                likesText1.setText("추천수: " + (200 + i));
-                // 샘플 이미지 설정
-                imageView1.setImageResource(R.drawable.ic_launcher_background);
-
-                // 행 레이아웃에 추가
-                rowLayout.addView(itemView1);
-
-                // 두 번째 커스텀 뷰 추가 (데이터가 있으면)
-                if (i + 1 < strings.size()) {
-                    View itemView2 = getLayoutInflater().inflate(R.layout.experience_item, rowLayout, false);
-                    LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
-                    itemView2.setLayoutParams(params2);
-                    ImageView imageView2 = itemView2.findViewById(R.id.item_image);
-                    TextView viewsText2 = itemView2.findViewById(R.id.item_views);
-                    TextView likesText2 = itemView2.findViewById(R.id.item_likes);
-
-                    // 이미지와 텍스트 설정 (임시 데이터)
-                    viewsText2.setText("조회수: " + (1000 + (i + 1)));
-                    likesText2.setText("추천수: " + (200 + (i + 1)));
-                    // 샘플 이미지 설정
-                    imageView2.setImageResource(R.drawable.ic_launcher_background);
-
-                    // 행 레이아웃에 추가
-                    rowLayout.addView(itemView2);
-                }
-
-                // 행을 전체 레이아웃에 추가
-                linearLayout.addView(rowLayout);
-            }
-
-         */
+            } 
         });
     }
 
