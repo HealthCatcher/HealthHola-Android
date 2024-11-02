@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_experience">
+    app:startDestination="@+id/navigation_startpage">
 
     <!-- HealthInfoFragment
     <fragment
@@ -18,6 +18,11 @@
         android:label="@string/title_diagnosis"
         tools:layout="@layout/fragment_diagnosis" />
     -->
+    <fragment
+        android:id="@+id/navigation_startpage"
+        android:name="com.hsfa.hearur_android.activity.mainactivity.ui.startpage.StartPageFragment"
+        android:label="헬스올라"
+        tools:layout="@layout/fragment_startpage" />
     <fragment
         android:id="@+id/navigation_experience"
         android:name="com.hsfa.hearur_android.activity.mainactivity.ui.experience.ExperienceFragment"
