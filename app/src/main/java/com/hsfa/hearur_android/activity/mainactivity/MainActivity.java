@@ -1,18 +1,20 @@
 package com.hsfa.hearur_android.activity.mainactivity;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.navigation.NavigationView;
 import com.hsfa.hearur_android.R;
-import com.hsfa.hearur_android.activity.settingsactivity.SettingsActivity;
 import com.hsfa.hearur_android.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +58,35 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.navigation_view);
 
+        // NavigationView 아이템 선택 리스너
+        navigationView.setNavigationItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+//            if (itemId == R.id.action_profile) {
+//                Toast.makeText(this, "프로필 선택됨", Toast.LENGTH_SHORT).show();
+//            } else if (itemId == R.id.action_points) {
+//                Toast.makeText(this, "포인트 화면 선택됨", Toast.LENGTH_SHORT).show();
+//            }
+            // 추가적인 메뉴 항목 처리
+            drawerLayout.closeDrawer(GravityCompat.END); // 드로어 닫기
+            return true;
+        });
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                // 드로어가 열려 있을 때 닫음
+                if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
+                    drawerLayout.closeDrawer(GravityCompat.END);
+                } else {
+                    // 드로어가 닫혀 있을 때 기본 뒤로 가기 동작 수행
+                    setEnabled(false);  // 콜백 비활성화
+                    finish();
+                }
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
@@ -69,8 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.action_settings) {
             // 설정 버튼이 눌렸을 때 동작할 코드 작성
-            Intent intent = new Intent(this, SettingsActivity.class); // 예시로 설정 화면으로 이동
-            startActivity(intent);
+            drawerLayout.openDrawer(GravityCompat.END); // 우측 드로어 열기
             return true;
         }
 
@@ -82,4 +112,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        return NavigationUI.navigateUp(navController, drawerLayout) || super.onSupportNavigateUp();
+    }
 }

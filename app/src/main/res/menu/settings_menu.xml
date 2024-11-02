@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_shopping_list"
+        android:title="장바구니 리스트" />
+    <item
+        android:id="@+id/action_experience_list"
+        android:title="당첨 리스트" />
+    <item
+        android:id="@+id/action_favorites"
+        android:title="하트 리스트" />
+    <item
+        android:id="@+id/action_review"
+        android:title="리뷰 쓰기" />
+    <item
+        android:id="@+id/action_get_points"
+        android:title="포인트 받기" />
+    <item
+        android:id="@+id/action_my_page"
+        android:title="마이 페이지" />
+</menu>
