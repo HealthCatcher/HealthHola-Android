@@ -1,5 +1,6 @@
 package com.hsfa.hearur_android.activity.mainactivity.ui.experience;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.hsfa.hearur_android.R;
+import com.hsfa.hearur_android.activity.detailactivity.DetailActivity;
 import com.hsfa.hearur_android.databinding.FragmentExperienceBinding;
 
 public class ExperienceFragment extends Fragment {
@@ -67,6 +69,14 @@ public class ExperienceFragment extends Fragment {
 
                 // 이미지 설정 (임시 이미지)
                 imageView.setImageResource(R.drawable.background); // 샘플 이미지 설정
+
+                itemView.setOnClickListener(v -> {
+                    // 상세 페이지로 이동하기 위한 Intent 생성
+                    Intent intent = new Intent(getActivity(), DetailActivity.class);
+                    // 필요에 따라 데이터 추가
+                    intent.putExtra("itemTitle", item);
+                    startActivity(intent);
+                });
 
                 // LinearLayout에 추가
                 linearLayout.addView(itemView);
