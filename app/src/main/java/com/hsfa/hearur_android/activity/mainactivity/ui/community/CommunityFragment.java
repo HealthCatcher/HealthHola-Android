@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -83,12 +84,24 @@ public class CommunityFragment extends Fragment {
             TextView subtitleTextView = postView.findViewById(R.id.item_subtitle);
             TextView viewsTextView = postView.findViewById(R.id.item_views);
             TextView likesTextView = postView.findViewById(R.id.item_likes);
+            ImageView imageView = postView.findViewById(R.id.item_image);
 
             titleTextView.setText(post.getTitle());
             subtitleTextView.setText(post.getShortContent(30)); // 30글자로 줄여서 표시
-
             viewsTextView.setText(String.valueOf(post.getViews()));
             likesTextView.setText(String.valueOf(post.getLikes()));
+            // 이미지 리소스 설정
+            if (post.getImageName() != null) {
+                int imageResource = postView.getContext().getResources().getIdentifier(post.getImageName(), "drawable", postView.getContext().getPackageName());
+                if (imageResource != 0) {
+                    imageView.setImageResource(imageResource);
+                } else {
+                    // 기본 이미지 설정 (리소스가 없는 경우)
+                    imageView.setImageResource(R.drawable.exer1); // default_image는 기본 이미지 리소스입니다.
+                }
+            } else {
+                imageView.setImageResource(R.drawable.exer2); // 이미지가 없을 때 사용할 기본 이미지 설정
+            }
 
             // 생성한 View를 컨테이너에 추가
             container.addView(postView);

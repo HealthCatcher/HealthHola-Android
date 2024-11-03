@@ -5,12 +5,14 @@ public class Post {
     private String content;
     private int views;
     private int likes;
+    private String imageName;
 
-    public Post(String title, String content, int views, int likes) {
+    public Post(String title, String content, int views, int likes, String imageName) {
         this.title = title;
         this.content = content;
         this.views = views;
         this.likes = likes;
+        this.imageName = imageName;
     }
 
     public String getTitle() {
@@ -50,5 +52,13 @@ public class Post {
 
     public void setLikes(int likes) {
         this.likes = likes;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 }
