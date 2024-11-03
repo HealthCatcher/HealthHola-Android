@@ -85,22 +85,14 @@ public class CommunityFragment extends Fragment {
             TextView likesTextView = postView.findViewById(R.id.item_likes);
 
             titleTextView.setText(post.getTitle());
-            subtitleTextView.setText(post.getContent()); // 서브타이틀이 Post 모델에 있어야 함
-            viewsTextView.setText("조회수: " + 100); // 조회수 설정
-            likesTextView.setText("추천수: " + 200); // 추천수 설정
+            subtitleTextView.setText(post.getShortContent(30)); // 30글자로 줄여서 표시
+
+            viewsTextView.setText(String.valueOf(post.getViews()));
+            likesTextView.setText(String.valueOf(post.getLikes()));
 
             // 생성한 View를 컨테이너에 추가
             container.addView(postView);
-
-            // 각 게시물 사이에 구분선 추가 (옵션)
-//            if (posts.indexOf(post) < posts.size() - 1) {
-//                View divider = new View(requireContext());
-//                divider.setLayoutParams(new LinearLayout.LayoutParams(
-//                        LinearLayout.LayoutParams.MATCH_PARENT,
-//                        2)); // 구분선의 높이 설정
-//                divider.setBackgroundColor(Color.LTGRAY);
-//                container.addView(divider);
-//            }
         }
+
     }
 }

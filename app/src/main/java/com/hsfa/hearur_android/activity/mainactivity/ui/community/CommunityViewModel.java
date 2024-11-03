@@ -3,9 +3,7 @@ package com.hsfa.hearur_android.activity.mainactivity.ui.community;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
 import com.hsfa.hearur_android.dto.Post;
-
 import java.util.List;
 
 public class CommunityViewModel extends ViewModel {
@@ -18,15 +16,14 @@ public class CommunityViewModel extends ViewModel {
 
     public void fetchPostList() {
         posts.setValue(List.of(
-                new Post("오늘의 운동 추천", "2024-10-13 13:14"),
-                new Post("제목2", "내용2"),
-                new Post("제목3", "내용3"),
-                new Post("제목4", "내용4"),
-                new Post("제목5", "내용5"),
-                new Post("제목6", "내용6"),
-                new Post("제목7", "내용7"),
-                new Post("제목8", "내용8")
-
+                new Post("오늘의 운동 추천", "유산소와 근력 운동을 함께 조합해보세요!", 245, 48),
+                new Post("헬스 초보자를 위한 가이드", "초보자를 위한 헬스장에서의 기본 운동 루틴 정리.", 180, 30),
+                new Post("식단 관리 꿀팁", "단백질 섭취량을 늘리고 탄수화물은 적당히!", 320, 60),
+                new Post("다이어트 성공 후기", "꾸준한 운동과 건강한 식단 덕에 목표 달성!", 410, 88),
+                new Post("홈트레이닝 장비 추천", "효과적인 홈트를 위한 필수 장비 소개.", 125, 22),
+                new Post("러닝 효과를 높이는 방법", "러닝 시 호흡법과 페이스 조절이 중요해요.", 290, 55),
+                new Post("헬스 초보가 주의해야 할 점", "과한 운동은 부상 위험이 있습니다. 적당히!", 110, 18),
+                new Post("스트레칭의 중요성", "운동 전후 스트레칭은 부상 방지에 필수적!", 150, 33)
         ));
     }
 
