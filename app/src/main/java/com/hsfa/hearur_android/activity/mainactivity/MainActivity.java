@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void navigateToStartPage() {
         // 초기 페이지로 이동
-        loadFragment(new ExperienceFragment());
+        loadFragment(new StartPageFragment());
     }
 
     private void setupCustomNavigationBar() {
