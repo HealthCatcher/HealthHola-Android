@@ -6,7 +6,7 @@
     app:cardElevation="4dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_margin="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,11 +34,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|start"
-                android:background="#99000000"
+                android:background="@drawable/item_rounded_background"
                 android:elevation="4dp"
                 android:padding="10dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="50dp"
                 android:text="Your Text Here"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
@@ -50,8 +50,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|start"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="70dp"
-                android:background="#99000000"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/item_rounded_background"
                 android:elevation="4dp"
                 android:padding="8dp"
                 android:text="Your Text Here"

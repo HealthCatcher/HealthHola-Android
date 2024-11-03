@@ -1,138 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:padding="16dp">
+
     <!-- 오픈 예정 상품 섹션 -->
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/upcoming_items_section"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="오픈 예정 상품"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:background="#B2DFDB"
-            android:padding="8dp" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginTop="8dp">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <!-- 상품 아이템들 -->
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="4dp"
-                android:background="@drawable/ic_dashboard_black_24dp" />
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="4dp"
-                android:background="@drawable/ic_dashboard_black_24dp" />
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="4dp"
-                android:background="@drawable/ic_dashboard_black_24dp" />
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="4dp"
-                android:background="@drawable/ic_dashboard_black_24dp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- 오늘의 Q 섹션 -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/question_of_the_day_section"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@id/upcoming_items_section"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <LinearLayout
-            android:id="@+id/question_of_the_day_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="오늘의 Q"
-                android:textSize="16sp"
-                android:background="#B2DFDB"
-                android:padding="8dp" />
+                android:text="오픈 예정 상품"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black" />
 
-            <TextView
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="My 867P"
-                android:gravity="end"
-                android:textSize="16sp"
-                android:layout_marginEnd="16dp" />
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="8dp">
+
+                <!-- 상품 아이템들 -->
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="4dp"
+                    android:src="@drawable/ic_dashboard_black_24dp"
+                    android:background="@drawable/rounded_image_background" />
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="4dp"
+                    android:src="@drawable/ic_dashboard_black_24dp"
+                    android:background="@drawable/rounded_image_background" />
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="4dp"
+                    android:src="@drawable/ic_dashboard_black_24dp"
+                    android:background="@drawable/rounded_image_background" />
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="4dp"
+                    android:src="@drawable/ic_dashboard_black_24dp"
+                    android:background="@drawable/rounded_image_background" />
+            </LinearLayout>
         </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
+    <!-- 오늘의 Q 섹션 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/question_of_the_day_section"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/upcoming_items_section"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-
-        <!-- 질문 텍스트 -->
-        <TextView
-            android:id="@+id/question_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="당신이 가장 걸리지 않기 위해 조심하는 질병은?"
-            app:layout_constraintTop_toBottomOf="@id/question_of_the_day_header"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:padding="8dp" />
-
-        <!-- 답변 입력 -->
         <LinearLayout
-            android:id="@+id/answers_section"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/question_text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:padding="8dp">
+            android:padding="16dp">
 
-            <EditText
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="감기"
-                android:padding="8dp" />
+                android:orientation="horizontal"
+                >
 
-            <EditText
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="오늘의 Q  "
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My 867P"
+                    android:gravity="end"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/darker_gray" />
+            </LinearLayout>
+
+            <!-- 질문 텍스트 -->
+            <TextView
+                android:id="@+id/question_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="암"
-                android:padding="8dp"
-                android:layout_marginTop="4dp" />
+                android:text="당신이 가장 걸리지 않기 위해 조심하는 질병은?"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/black" />
+
+            <!-- 답변 입력 -->
+            <LinearLayout
+                android:id="@+id/answers_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="감기"
+                    android:padding="12dp"
+                    android:background="@drawable/rounded_edittext_background" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="암"
+                    android:padding="12dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/rounded_edittext_background" />
+            </LinearLayout>
         </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
