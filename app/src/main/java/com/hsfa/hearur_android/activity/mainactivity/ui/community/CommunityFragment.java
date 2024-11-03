@@ -93,14 +93,14 @@ public class CommunityFragment extends Fragment {
             container.addView(postView);
 
             // 각 게시물 사이에 구분선 추가 (옵션)
-            if (posts.indexOf(post) < posts.size() - 1) {
-                View divider = new View(requireContext());
-                divider.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        2)); // 구분선의 높이 설정
-                divider.setBackgroundColor(Color.LTGRAY);
-                container.addView(divider);
-            }
+//            if (posts.indexOf(post) < posts.size() - 1) {
+//                View divider = new View(requireContext());
+//                divider.setLayoutParams(new LinearLayout.LayoutParams(
+//                        LinearLayout.LayoutParams.MATCH_PARENT,
+//                        2)); // 구분선의 높이 설정
+//                divider.setBackgroundColor(Color.LTGRAY);
+//                container.addView(divider);
+//            }
         }
     }
 }
