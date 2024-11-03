@@ -25,7 +25,7 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:background="#dddddd"
-                android:src="@drawable/pngegg"
+                android:src="@drawable/item_background"
                  />
 
             <!-- 이미지 위에 텍스트 -->

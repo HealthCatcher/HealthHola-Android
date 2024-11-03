@@ -5,14 +5,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.material.tabs.TabLayout;
 import com.hsfa.hearur_android.R;
 import com.hsfa.hearur_android.activity.detailactivity.DetailActivity;
 import com.hsfa.hearur_android.databinding.FragmentExperienceBinding;
@@ -21,76 +24,50 @@ public class ExperienceFragment extends Fragment {
 
     private FragmentExperienceBinding binding;
     private ExperienceViewModel experienceViewModel;
-    private LinearLayout linearLayout;
+    private FrameLayout frameLayout;
+    private TabLayout tabLayout;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        ExperienceViewModel experienceViewModel =
-                new ViewModelProvider(this).get(ExperienceViewModel.class);
+        View view = inflater.inflate(R.layout.fragment_experience, container, false);
+        tabLayout = view.findViewById(R.id.tab_layout);
 
-        binding = FragmentExperienceBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-        linearLayout = binding.experienceList;
+        // 기본 프래그먼트 로드 (체험리스트)
+        loadFragment(new ExperienceListFragment());
 
-        //final TextView textView = binding.textExperience;
-        //experienceViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;
-    }
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                Fragment selectedFragment;
+                switch (tab.getPosition()) {
+                    case 0:
+                        selectedFragment = new ExperienceListFragment();
+                        break;
+                    case 1:
+                        selectedFragment = new RecommendationListFragment();
+                        break;
+//                    case 2:
+//                        selectedFragment = new MyListFragment();
+//                        break;
+                    default:
+                        selectedFragment = new ExperienceListFragment();
+                }
+                loadFragment(selectedFragment);
+            }
 
-    @Override
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
 
-        // ViewModel 인스턴스 가져오기
-        experienceViewModel = new ViewModelProvider(this).get(ExperienceViewModel.class);
-
-        // LiveData의 데이터를 구독하여 UI에 반영
-        experienceViewModel.getDataList().observe(getViewLifecycleOwner(), strings -> {
-            // 기존 뷰 제거 (중복 방지)
-            linearLayout.removeAllViews();
-            for (String item : strings) {
-                // 커스텀 뷰 추가
-                View itemView = getLayoutInflater().inflate(R.layout.experience_item3, linearLayout, false);
-
-                // XML에서 정의된 뷰 요소들을 가져옴
-                ImageView imageView = itemView.findViewById(R.id.card_image);
-                TextView titleText = itemView.findViewById(R.id.card_title);
-                TextView subtitleText = itemView.findViewById(R.id.card_subtitle);
-                TextView contentText = itemView.findViewById(R.id.card_content);
-
-                // 제목, 서브타이틀, 내용 설정 (임시 데이터)
-                titleText.setText(item); // 제목 설정
-                subtitleText.setText("Subtitle for " + item); // 서브타이틀 설정
-
-                // 조회수와 추천수를 card_content에 표시
-                int views = 1000; // 샘플 조회수
-                int likes = 200;  // 샘플 추천수
-                contentText.setText("조회 " + views + " 추천 " + likes); // 조회수와 추천수 설정
-
-                // 이미지 설정 (임시 이미지)
-                imageView.setImageResource(R.drawable.background); // 샘플 이미지 설정
-
-                itemView.setOnClickListener(v -> {
-                    // 상세 페이지로 이동하기 위한 Intent 생성
-                    Intent intent = new Intent(getActivity(), DetailActivity.class);
-                    // 필요에 따라 데이터 추가
-                    intent.putExtra("itemTitle", item);
-                    startActivity(intent);
-                });
-
-                // LinearLayout에 추가
-                linearLayout.addView(itemView);
-            } 
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
         });
+
+        return view;
     }
 
-
-
-
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.experience_list, fragment);
+        transaction.commit();
     }
 }
