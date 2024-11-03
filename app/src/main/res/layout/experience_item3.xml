@@ -1,12 +1,10 @@
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    >
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,13 +16,15 @@
             android:layout_height="180dp">
 
             <!-- 이미지 뷰 -->
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/card_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:alpha="0.4"
                 android:scaleType="centerCrop"
-                android:background="#dddddd"
-                android:src="@drawable/item_background" />
+                android:src="@drawable/background3"
+                />
+
 
             <!-- 이미지 위에 텍스트 -->
             <TextView
@@ -32,13 +32,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|start"
-                android:background="@drawable/item_rounded_background"
-                android:elevation="4dp"
-                android:padding="10dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="50dp"
+                android:elevation="4dp"
+                android:padding="10dp"
                 android:text="Your Text Here"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -49,21 +48,35 @@
                 android:layout_gravity="top|start"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="100dp"
-                android:background="@drawable/item_rounded_background"
                 android:elevation="4dp"
                 android:padding="8dp"
                 android:text="Your Text Here"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/card_period"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="140dp"
+                android:elevation="4dp"
+                android:padding="8dp"
+                android:text="Your Text Here"
+                android:textColor="@android:color/black"
+                android:textSize="10sp" />
+
 
             <ImageView
                 android:id="@+id/card_product"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="top|end"
-                android:layout_marginEnd="40dp"
                 android:layout_marginTop="40dp"
-                android:src="@drawable/pngegg"/>
+                android:layout_marginEnd="40dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/pngegg" />
 
             <!-- 우측 하단에 빈 하트 아이콘 추가 -->
             <ImageView
@@ -74,16 +87,16 @@
                 android:layout_margin="12dp"
                 android:src="@drawable/baseline_favorite_border_24" />
         </FrameLayout>
-    <!--
-        <TextView
-            android:id="@+id/card_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="2dp"
-            android:text="Your Text Here"
-            android:textSize="16sp"
-            android:gravity="end"/>
-            -->
+        <!--
+            <TextView
+                android:id="@+id/card_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:text="Your Text Here"
+                android:textSize="16sp"
+                android:gravity="end"/>
+                -->
     </LinearLayout>
 </androidx.cardview.widget.CardView>
 
