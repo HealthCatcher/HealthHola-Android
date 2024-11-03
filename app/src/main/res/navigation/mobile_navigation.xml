@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/navigation_startpage"
         android:name="com.hsfa.hearur_android.activity.mainactivity.ui.startpage.StartPageFragment"
-        android:label="헬스올라"
+        android:label="홈"
         tools:layout="@layout/fragment_startpage" />
     <fragment
         android:id="@+id/navigation_experience"

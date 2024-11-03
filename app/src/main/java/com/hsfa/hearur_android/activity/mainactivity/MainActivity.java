@@ -3,9 +3,15 @@ package com.hsfa.hearur_android.activity.mainactivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -30,6 +36,24 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar); // Toolbar를 ActionBar로 설정
+        // MainActivity.java
+        ActionBar ab = getSupportActionBar();
+
+        if (ab != null) {
+            ab.setDisplayShowCustomEnabled(true);
+            ab.setDisplayShowTitleEnabled(false);
+
+            // 홈 버튼에 클릭 이벤트 설정
+            ImageView homeButton = findViewById(R.id.home_button);
+            TextView homeTitle = findViewById(R.id.home_text);
+            View.OnClickListener homeClickListener = v -> navigateToStartPage();
+
+            homeButton.setOnClickListener(homeClickListener);
+            homeTitle.setOnClickListener(homeClickListener);
+        }
 
         sharedPreferences = getSharedPreferences("my_app_pref", MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -88,6 +112,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void navigateToStartPage() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.navigation_startpage);
+        Toast.makeText(this, "Home 이동", Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
