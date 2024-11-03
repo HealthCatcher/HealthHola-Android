@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -95,17 +96,53 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void navigateToStartPage() {
+        ConstraintLayout tabLeft = findViewById(R.id.tab_left);
+        ConstraintLayout tabRight = findViewById(R.id.tab_right);
+        View tabCenter = findViewById(R.id.center_icon_background);
+        tabLeft.setBackgroundResource(R.drawable.unselected_left_tab_background); // 선택된 탭의 배경색으로 변경
+        tabRight.setBackgroundResource(R.drawable.unselected_right_tab_background); // 다른 탭은 기본 배경색으로 변경
+        tabCenter.setBackgroundResource(R.drawable.unselected_tab_background); // 선택된 탭의 배경색으로 변경
+
         // 초기 페이지로 이동
         loadFragment(new StartPageFragment());
     }
 
     private void setupCustomNavigationBar() {
-        TextView tabLeft = findViewById(R.id.tab_left);
-        TextView tabRight = findViewById(R.id.tab_right);
+        ConstraintLayout tabLeft = findViewById(R.id.tab_left);
+        ConstraintLayout tabRight = findViewById(R.id.tab_right);
+        View tabCenter = findViewById(R.id.center_icon_background);
 
-        tabLeft.setOnClickListener(v -> loadFragment(new ExperienceFragment()));
-        tabRight.setOnClickListener(v -> loadFragment(new CommunityFragment()));
+        tabLeft.setOnClickListener(v -> {
+            // 클릭 이벤트 처리
+            loadFragment(new ExperienceFragment()); // 원하는 경우 프래그먼트를 로드할 수도 있음
+
+            // 배경색 변경
+            tabLeft.setBackgroundResource(R.drawable.selected_left_tab_background); // 선택된 탭의 배경색으로 변경
+            tabRight.setBackgroundResource(R.drawable.unselected_right_tab_background); // 다른 탭은 기본 배경색으로 변경
+            tabCenter.setBackgroundResource(R.drawable.unselected_tab_background); // 선택된 탭의 배경색으로 변경
+        });
+
+        tabRight.setOnClickListener(v -> {
+            // 클릭 이벤트 처리
+            loadFragment(new CommunityFragment()); // 원하는 경우 프래그먼트를 로드할 수도 있음
+
+            // 배경색 변경
+            tabLeft.setBackgroundResource(R.drawable.unselected_left_tab_background); // 다른 탭은 기본 배경색으로 변경
+            tabRight.setBackgroundResource(R.drawable.selected_right_tab_background); // 선택된 탭의 배경색으로 변경
+            tabCenter.setBackgroundResource(R.drawable.unselected_tab_background); // 선택된 탭의 배경색으로 변경
+        });
+
+        tabCenter.setOnClickListener(v -> {
+            // 클릭 이벤트 처리
+            loadFragment(new StartPageFragment()); // 원하는 경우 프래그먼트를 로드할 수도 있음
+
+            // 배경색 변경
+            tabLeft.setBackgroundResource(R.drawable.unselected_left_tab_background); // 다른 탭은 기본 배경색으로 변경
+            tabRight.setBackgroundResource(R.drawable.unselected_right_tab_background); // 다른 탭은 기본 배경색으로 변경
+            tabCenter.setBackgroundResource(R.drawable.selected_tab_background); // 선택된 탭의 배경색으로 변경
+        });
     }
+
 
     private void loadFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

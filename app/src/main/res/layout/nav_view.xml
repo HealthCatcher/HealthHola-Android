@@ -5,38 +5,91 @@
     android:background="@null">
 
     <!-- 왼쪽 아이템 -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tab_left"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/left_tab_background"
+        android:background="@drawable/unselected_left_tab_background"
         android:padding="10dp"
-        android:text="체험단"
-        android:textColor="#333333"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:gravity="center"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tab_right"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_weight="1" />
+        app:layout_constraintHorizontal_weight="1">
+
+        <!-- 체험단 아이콘 -->
+        <ImageView
+            android:id="@+id/tab_left_icon"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="65dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/baseline_badge_24"
+            android:contentDescription="체험단 아이콘" />
+
+        <!-- 체험단 텍스트 -->
+        <TextView
+            android:id="@+id/tab_left_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="체험단"
+            android:layout_marginLeft="60dp"
+            app:layout_constraintTop_toBottomOf="@id/tab_left_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="#333333"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="4dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="체험단 텍스트"
+            android:layout_below="@id/tab_left_icon" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- 오른쪽 아이템 -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tab_right"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/right_tab_background"
+        android:background="@drawable/unselected_right_tab_background"
         android:padding="10dp"
-        android:text="커뮤니티"
-        android:textColor="#333333"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tab_left"
-        app:layout_constraintHorizontal_weight="1" />
+        app:layout_constraintHorizontal_weight="1">
+
+        <!-- 커뮤니티 아이콘 -->
+        <ImageView
+            android:id="@+id/tab_right_icon"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="65dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/baseline_people_alt_24"
+            android:contentDescription="커뮤니티 아이콘" />
+
+        <!-- 커뮤니티 텍스트 -->
+        <TextView
+            android:id="@+id/tab_right_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="55dp"
+            app:layout_constraintTop_toBottomOf="@id/tab_right_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="커뮤니티"
+            android:textColor="#333333"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="4dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="커뮤니티 텍스트"
+            android:layout_below="@id/tab_right_icon" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- 중앙 돼지 아이콘 -->
     <FrameLayout
@@ -46,13 +99,13 @@
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tab_right"
-        app:layout_constraintStart_toEndOf="@+id/tab_left"
-        >
+        app:layout_constraintStart_toEndOf="@+id/tab_left">
 
         <View
+            android:id="@+id/center_icon_background"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/rounded_background" />
+            android:background="@drawable/unselected_tab_background" />
 
         <ImageView
             android:id="@+id/center_icon"
@@ -62,3 +115,5 @@
             android:src="@drawable/ic_piggybank" />
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
