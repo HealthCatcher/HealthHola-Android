@@ -12,8 +12,11 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -21,7 +24,10 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 import com.hsfa.hearur_android.R;
+import com.hsfa.hearur_android.activity.mainactivity.ui.startpage.StartPageFragment;
 import com.hsfa.hearur_android.databinding.ActivityMainBinding;
+import com.hsfa.hearur_android.activity.mainactivity.ui.experience.ExperienceFragment;
+import com.hsfa.hearur_android.activity.mainactivity.ui.community.CommunityFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // Toolbar 설정
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar); // Toolbar를 ActionBar로 설정
-        // MainActivity.java
+        setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
 
         if (ab != null) {
@@ -55,58 +61,33 @@ public class MainActivity extends AppCompatActivity {
             homeTitle.setOnClickListener(homeClickListener);
         }
 
+        // SharedPreferences 초기화
         sharedPreferences = getSharedPreferences("my_app_pref", MODE_PRIVATE);
         editor = sharedPreferences.edit();
-        // 로그인 로직 비활성화!!!!!!!!!!!!!!!!!!!!!!!!!
-        // 사용 예시: 로그인 상태 가져오기
-//        boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
-//        if(!isLoggedIn) {
-//            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-
-        /*
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_healthinfo, R.id.navigation_diagnosis, R.id.navigation_experience, R.id.navigation_community, R.id.navigation_settings
-        )
-                .build();
-        */
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_startpage, R.id.navigation_experience, R.id.navigation_community, R.id.navigation_survey
-        )
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView, navController);
 
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
 
-        // NavigationView 아이템 선택 리스너
+        // 드로어 메뉴 아이템 선택 리스너
         navigationView.setNavigationItemSelectedListener(item -> {
-            int itemId = item.getItemId();
-
-//            if (itemId == R.id.action_profile) {
-//                Toast.makeText(this, "프로필 선택됨", Toast.LENGTH_SHORT).show();
-//            } else if (itemId == R.id.action_points) {
-//                Toast.makeText(this, "포인트 화면 선택됨", Toast.LENGTH_SHORT).show();
-//            }
-            // 추가적인 메뉴 항목 처리
-            drawerLayout.closeDrawer(GravityCompat.END); // 드로어 닫기
+            drawerLayout.closeDrawer(GravityCompat.END);
             return true;
         });
+
+        // 커스텀 네비게이션 바의 탭 설정
+        setupCustomNavigationBar();
+
+        if (savedInstanceState == null) {
+            loadFragment(new StartPageFragment());
+        }
+
+        // 뒤로가기 버튼 처리
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                // 드로어가 열려 있을 때 닫음
                 if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
                     drawerLayout.closeDrawer(GravityCompat.END);
                 } else {
-                    // 드로어가 닫혀 있을 때 기본 뒤로 가기 동작 수행
-                    setEnabled(false);  // 콜백 비활성화
                     finish();
                 }
             }
@@ -114,8 +95,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void navigateToStartPage() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        navController.navigate(R.id.navigation_startpage);
+        // 초기 페이지로 이동
+        loadFragment(new ExperienceFragment());
+    }
+
+    private void setupCustomNavigationBar() {
+        TextView tabLeft = findViewById(R.id.tab_left);
+        TextView tabRight = findViewById(R.id.tab_right);
+
+        tabLeft.setOnClickListener(v -> loadFragment(new ExperienceFragment()));
+        tabRight.setOnClickListener(v -> loadFragment(new CommunityFragment()));
+    }
+
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.nav_host_fragment_activity_main, fragment);
+        transaction.commit();
     }
 
     @Override
@@ -129,22 +124,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            // 설정 버튼이 눌렸을 때 동작할 코드 작성
-            drawerLayout.openDrawer(GravityCompat.END); // 우측 드로어 열기
+            drawerLayout.openDrawer(GravityCompat.END);
             return true;
         }
-
-        if (id == R.id.action_notice) {
-            // 공지사항 버튼이 눌렸을 때 동작할 코드 작성
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        return NavigationUI.navigateUp(navController, drawerLayout) || super.onSupportNavigateUp();
     }
 }

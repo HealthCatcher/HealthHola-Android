@@ -16,8 +16,11 @@ import androidx.fragment.app.Fragment;
 import com.hsfa.hearur_android.R;
 import com.hsfa.hearur_android.activity.detailactivity.DetailActivity;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ExperienceListFragment extends Fragment {
 
@@ -34,20 +37,55 @@ public class ExperienceListFragment extends Fragment {
 
     private void populateExperienceList() {
         // 데이터를 동적으로 추가
-        for (String item : getDummyData()) {
+        for (Map<String, String> item : getDummyData()) {
             View itemView = getLayoutInflater().inflate(R.layout.experience_item3, linearLayout, false);
+
             TextView titleText = itemView.findViewById(R.id.card_title);
-            titleText.setText(item);
+            TextView subtitleText = itemView.findViewById(R.id.card_subtitle);
+
+            titleText.setText(item.get("title"));
+            subtitleText.setText(item.get("subtitle"));
+
             itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(getActivity(), DetailActivity.class);
-                intent.putExtra("itemTitle", item);
+                intent.putExtra("itemTitle", item.get("title"));
                 startActivity(intent);
             });
+
             linearLayout.addView(itemView);
         }
     }
 
-    private List<String> getDummyData() {
-        return Arrays.asList("Item 1", "Item 2", "Item 3");
+
+    private List<Map<String, String>> getDummyData() {
+        List<Map<String, String>> data = new ArrayList<>();
+
+        Map<String, String> item1 = new HashMap<>();
+        item1.put("title", "비타민 C 보충제");
+        item1.put("subtitle", "면역력 강화 및 피로 회복에 도움");
+        data.add(item1);
+
+        Map<String, String> item2 = new HashMap<>();
+        item2.put("title", "오메가-3 지방산");
+        item2.put("subtitle", "심혈관 건강과 뇌 기능 개선");
+        data.add(item2);
+
+        Map<String, String> item3 = new HashMap<>();
+        item3.put("title", "프로바이오틱스");
+        item3.put("subtitle", "장 건강 및 소화 개선에 도움");
+        data.add(item3);
+
+        Map<String, String> item4 = new HashMap<>();
+        item4.put("title", "칼슘 보충제");
+        item4.put("subtitle", "뼈 건강 및 골다공증 예방에 필수");
+        data.add(item4);
+
+        Map<String, String> item5 = new HashMap<>();
+        item5.put("title", "단백질 파우더");
+        item5.put("subtitle", "운동 후 근육 회복에 효과적");
+        data.add(item5);
+
+        return data;
     }
+
 }
