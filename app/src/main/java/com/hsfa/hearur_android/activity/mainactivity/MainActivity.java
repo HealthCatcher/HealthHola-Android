@@ -116,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
     private void navigateToStartPage() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         navController.navigate(R.id.navigation_startpage);
-        Toast.makeText(this, "Home 이동", Toast.LENGTH_SHORT).show();
     }
 
     @Override
