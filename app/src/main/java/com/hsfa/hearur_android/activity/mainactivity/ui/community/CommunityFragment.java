@@ -74,7 +74,7 @@ public class CommunityFragment extends Fragment {
 
         for (Post post : posts) {
             // XML 레이아웃 inflate
-            View postView = inflater.inflate(R.layout.experience_item2, container, false);
+            View postView = inflater.inflate(R.layout.item_community_post, container, false);
 
             // 제목, 서브타이틀, 조회수, 추천수 설정
             TextView titleTextView = postView.findViewById(R.id.item_title);

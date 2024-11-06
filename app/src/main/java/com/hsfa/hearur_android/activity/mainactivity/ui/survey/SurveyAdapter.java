@@ -23,7 +23,7 @@ public class SurveyAdapter extends RecyclerView.Adapter<SurveyAdapter.SurveyView
     @Override
     public SurveyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // survey_item.xml을 인플레이트하여 ViewHolder에 전달
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.survey_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_survey, parent, false);
         return new SurveyViewHolder(view);
     }
 

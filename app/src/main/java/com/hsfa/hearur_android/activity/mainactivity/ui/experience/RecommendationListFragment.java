@@ -46,7 +46,7 @@ public class RecommendationListFragment extends Fragment {
             linearLayout.removeAllViews(); // 기존 뷰 제거
             for (String item : items) {
                 // 커스텀 뷰 추가
-                View itemView = getLayoutInflater().inflate(R.layout.experience_item3, linearLayout, false);
+                View itemView = getLayoutInflater().inflate(R.layout.item_experience_post, linearLayout, false);
 
                 // XML에서 정의된 뷰 요소들 가져오기
                 ImageView imageView = itemView.findViewById(R.id.card_image);

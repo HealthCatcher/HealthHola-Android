@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,7 +17,6 @@ import com.hsfa.hearur_android.R;
 import com.hsfa.hearur_android.activity.detailactivity.DetailActivity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +37,7 @@ public class ExperienceListFragment extends Fragment {
     private void populateExperienceList() {
         // 데이터를 동적으로 추가
         for (Map<String, String> item : getDummyData()) {
-            View itemView = getLayoutInflater().inflate(R.layout.experience_item3, linearLayout, false);
+            View itemView = getLayoutInflater().inflate(R.layout.item_experience_post, linearLayout, false);
 
             TextView titleText = itemView.findViewById(R.id.card_title);
             TextView subtitleText = itemView.findViewById(R.id.card_subtitle);
