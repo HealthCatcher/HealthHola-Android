@@ -4,10 +4,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.ActionBar;
@@ -18,10 +16,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 import com.hsfa.hearur_android.R;
@@ -99,9 +93,9 @@ public class MainActivity extends AppCompatActivity {
         ConstraintLayout tabLeft = findViewById(R.id.tab_left);
         ConstraintLayout tabRight = findViewById(R.id.tab_right);
         View tabCenter = findViewById(R.id.center_icon_background);
-        tabLeft.setBackgroundResource(R.drawable.unselected_left_tab_background); // 선택된 탭의 배경색으로 변경
-        tabRight.setBackgroundResource(R.drawable.unselected_right_tab_background); // 다른 탭은 기본 배경색으로 변경
-        tabCenter.setBackgroundResource(R.drawable.unselected_tab_background); // 선택된 탭의 배경색으로 변경
+        tabLeft.setBackgroundResource(R.drawable.background_unselected_left_tab); // 선택된 탭의 배경색으로 변경
+        tabRight.setBackgroundResource(R.drawable.background_unselected_right_tab); // 다른 탭은 기본 배경색으로 변경
+        tabCenter.setBackgroundResource(R.drawable.background_unselected_circle_tab); // 선택된 탭의 배경색으로 변경
 
         // 초기 페이지로 이동
         loadFragment(new StartPageFragment());
@@ -117,9 +111,9 @@ public class MainActivity extends AppCompatActivity {
             loadFragment(new ExperienceFragment()); // 원하는 경우 프래그먼트를 로드할 수도 있음
 
             // 배경색 변경
-            tabLeft.setBackgroundResource(R.drawable.selected_left_tab_background); // 선택된 탭의 배경색으로 변경
-            tabRight.setBackgroundResource(R.drawable.unselected_right_tab_background); // 다른 탭은 기본 배경색으로 변경
-            tabCenter.setBackgroundResource(R.drawable.unselected_tab_background); // 선택된 탭의 배경색으로 변경
+            tabLeft.setBackgroundResource(R.drawable.background_selected_left_tab); // 선택된 탭의 배경색으로 변경
+            tabRight.setBackgroundResource(R.drawable.background_unselected_right_tab); // 다른 탭은 기본 배경색으로 변경
+            tabCenter.setBackgroundResource(R.drawable.background_unselected_circle_tab); // 선택된 탭의 배경색으로 변경
         });
 
         tabRight.setOnClickListener(v -> {
@@ -127,9 +121,9 @@ public class MainActivity extends AppCompatActivity {
             loadFragment(new CommunityFragment()); // 원하는 경우 프래그먼트를 로드할 수도 있음
 
             // 배경색 변경
-            tabLeft.setBackgroundResource(R.drawable.unselected_left_tab_background); // 다른 탭은 기본 배경색으로 변경
-            tabRight.setBackgroundResource(R.drawable.selected_right_tab_background); // 선택된 탭의 배경색으로 변경
-            tabCenter.setBackgroundResource(R.drawable.unselected_tab_background); // 선택된 탭의 배경색으로 변경
+            tabLeft.setBackgroundResource(R.drawable.background_unselected_left_tab); // 다른 탭은 기본 배경색으로 변경
+            tabRight.setBackgroundResource(R.drawable.background_selected_right_tab); // 선택된 탭의 배경색으로 변경
+            tabCenter.setBackgroundResource(R.drawable.background_unselected_circle_tab); // 선택된 탭의 배경색으로 변경
         });
 
         tabCenter.setOnClickListener(v -> {
@@ -137,9 +131,9 @@ public class MainActivity extends AppCompatActivity {
             loadFragment(new StartPageFragment()); // 원하는 경우 프래그먼트를 로드할 수도 있음
 
             // 배경색 변경
-            tabLeft.setBackgroundResource(R.drawable.unselected_left_tab_background); // 다른 탭은 기본 배경색으로 변경
-            tabRight.setBackgroundResource(R.drawable.unselected_right_tab_background); // 다른 탭은 기본 배경색으로 변경
-            tabCenter.setBackgroundResource(R.drawable.selected_tab_background); // 선택된 탭의 배경색으로 변경
+            tabLeft.setBackgroundResource(R.drawable.background_unselected_left_tab); // 다른 탭은 기본 배경색으로 변경
+            tabRight.setBackgroundResource(R.drawable.background_unselected_right_tab); // 다른 탭은 기본 배경색으로 변경
+            tabCenter.setBackgroundResource(R.drawable.background_selected_circle_tab); // 선택된 탭의 배경색으로 변경
         });
     }
 

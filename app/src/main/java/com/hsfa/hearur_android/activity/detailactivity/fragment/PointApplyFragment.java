@@ -19,7 +19,7 @@ public class PointApplyFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentPointApplyBinding.inflate(inflater, container, false);
-        binding.customNavBar.centerIconBackground.setBackgroundResource(R.drawable.selected_tab_background);
+        binding.customNavBar.centerIconBackground.setBackgroundResource(R.drawable.background_selected_circle_tab);
         // 필요한 경우 ViewModel 초기화
         return binding.getRoot();
     }

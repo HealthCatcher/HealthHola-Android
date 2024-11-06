@@ -22,7 +22,7 @@
                 android:layout_height="match_parent"
                 android:alpha="0.4"
                 android:scaleType="centerCrop"
-                android:src="@drawable/background3"
+                android:src="@drawable/image_background3"
                 />
 
 
@@ -76,7 +76,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/pngegg" />
+                android:src="@drawable/image_example_item2" />
 
             <!-- 우측 하단에 빈 하트 아이콘 추가 -->
             <ImageView

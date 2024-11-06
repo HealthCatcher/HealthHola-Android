@@ -10,7 +10,7 @@
         android:layout_height="180dp"
         android:layout_margin="20dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/example_advertisement_image"
+        android:src="@drawable/image_healthcatcher_diary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

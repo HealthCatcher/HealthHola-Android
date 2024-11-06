@@ -58,7 +58,7 @@ public class RecommendationListFragment extends Fragment {
                 subtitleText.setText("Subtitle for " + item);
 
                 // 임시 이미지 설정
-                imageView.setImageResource(R.drawable.item_background2);
+                imageView.setImageResource(R.drawable.image_background5);
 
                 itemView.setOnClickListener(v -> {
                     // 클릭 시 상세 페이지로 이동

@@ -47,8 +47,8 @@
             android:layout_height="80dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/rounded_image_background"
-            android:src="@drawable/exer1"
+            android:background="@drawable/background_border"
+            android:src="@drawable/image_example_post"
             android:scaleType="centerCrop"
 
             app:layout_constraintEnd_toEndOf="parent"

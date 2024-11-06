@@ -1,9 +1,6 @@
 package com.hsfa.hearur_android.activity.mainactivity.ui.community;
 
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,10 +94,10 @@ public class CommunityFragment extends Fragment {
                     imageView.setImageResource(imageResource);
                 } else {
                     // 기본 이미지 설정 (리소스가 없는 경우)
-                    imageView.setImageResource(R.drawable.exer1); // default_image는 기본 이미지 리소스입니다.
+                    imageView.setImageResource(R.drawable.image_example_post); // default_image는 기본 이미지 리소스입니다.
                 }
             } else {
-                imageView.setImageResource(R.drawable.exer2); // 이미지가 없을 때 사용할 기본 이미지 설정
+                imageView.setImageResource(R.drawable.image_example_post2); // 이미지가 없을 때 사용할 기본 이미지 설정
             }
 
             // 생성한 View를 컨테이너에 추가

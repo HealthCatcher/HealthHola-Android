@@ -13,5 +13,5 @@
         android:clickable="true"
         android:contentDescription="Home"
         android:focusable="true"
-        android:src="@drawable/healthhola_logo" />
+        android:src="@drawable/logo_healthhola" />
 </LinearLayout>

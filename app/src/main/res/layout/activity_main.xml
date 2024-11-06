@@ -41,7 +41,7 @@
                     android:layout_marginTop="4dp"
                     android:contentDescription="Home Button"
                     android:scaleType="centerInside"
-                    android:src="@drawable/healthhola_logo" />
+                    android:src="@drawable/logo_healthhola" />
 
                 <TextView
                     android:id="@+id/home_text"
